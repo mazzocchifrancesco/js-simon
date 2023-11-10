@@ -1,14 +1,13 @@
-const numBox=document.getElementById("numeri");
+const numBox=document.getElementById("divNumber");
 
 // creazione array numeri random
-const numeri = [];
-for (let i = 0; i <5; i++) {
-    numeri.push(getRndInteger(1,100));
-}
-numBox.innerText="i numeri sono: " +numeri;
-console.log(numeri);
+const fiveNumber = listaNumeri();
+
+numBox.innerText="i numeri sono: " +fiveNumber;
+console.log(fiveNumber);
 
 let risultati=0;
+
 
 // timeout scomparsa numeri
 
@@ -25,7 +24,7 @@ setTimeout (function() {
         let nMemo=parseInt(prompt("inserisci uno dei 5 numeri"));
 
         // check numeri utente in array
-        if (numeri.includes(nMemo)==true) {
+        if (fiveNumber.includes(nMemo)==true) {
             risultati++;
         };
     };
@@ -46,4 +45,20 @@ setTimeout (function() {
 // genera numeri casuali ripetibili
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
+  };
+
+//   genera array numeri diversi
+
+function listaNumeri() {
+    let i = 1
+    let numeri = [];
+    do {
+        const rNum=getRndInteger(1, 100);
+        if (numeri.includes(rNum)) {}
+        else {
+            numeri.push(rNum);
+            i++;
+        };
+    } while (i <= 5);
+    return numeri;
+};
